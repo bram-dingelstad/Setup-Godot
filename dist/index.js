@@ -49,8 +49,10 @@ function getGodot(version, mono) {
             return godotPath;
         }
         core.info(`Attempting to download ${godotLabel} headless for linux...`);
+
         const godotFileName = `Godot_v${version}-stable_${mono ? "mono_" : ""}linux_headless${mono ? "_" : "."}64`;
-        const godotDownloadPath = yield tc.downloadTool(`https://downloads.tuxfamily.org/godotengine/${version}/${mono ? "mono/" : ""}${godotFileName}.zip`);
+        core.info(`https://github.com/godotengine/godot-builds/releases/download/${version}-stable/${godotFileName}.zip`);
+        const godotDownloadPath = yield tc.downloadTool(`https://github.com/godotengine/godot-builds/releases/download/${version}-stable/${godotFileName}.zip`);
         core.info(`${godotLabel} donwload sucessfull!`);
         core.info(`Attempting to extract ${godotLabel}`);
         const godotExtractPath = yield tc.extractZip(godotDownloadPath, undefined);
@@ -79,7 +81,8 @@ function getTemplates(version, mono) {
         else {
             const templatesFileName = `Godot_v${version}-stable_${mono ? "mono_" : ""}export_templates`;
             core.info(`Attempting to download ${templatesLabel} export templates...`);
-            const templatesDownloadPath = yield tc.downloadTool(`https://downloads.tuxfamily.org/godotengine/${version}/${mono ? "mono/" : ""}${templatesFileName}.tpz`);
+            core.info(`https://github.com/godotengine/godot-builds/releases/download/${version}-stable/${templatesFileName}.tpz`);
+            const templatesDownloadPath = yield tc.downloadTool(`https://github.com/godotengine/godot-builds/releases/download/${version}-stable/${templatesFileName}.tpz`);
             core.info(`${templatesLabel} donwload sucessfull!`);
             core.info(`Attempting to extract ${templatesLabel}`);
             const templatesExtractPath = yield tc.extractZip(templatesDownloadPath, undefined);

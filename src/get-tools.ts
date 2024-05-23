@@ -17,7 +17,6 @@ export async function getGodot(version: string, mono: boolean): Promise<string> 
 
   const godotFileName = `Godot_v${version}-stable_${mono ? "mono_" : ""}linux_headless${mono ? "_" : "."}64`;
 
-                                                   https://github.com/godotengine/godot-builds/releases/download/3.5.3-stable/Godot_v3.5.3-stable_linux_headless.64.zip
   const godotDownloadPath = await tc.downloadTool(`https://github.com/godotengine/godot-builds/releases/download/${version}/${godotFileName}.zip`);
   core.info(`${godotLabel} donwload sucessfull!`);
 
