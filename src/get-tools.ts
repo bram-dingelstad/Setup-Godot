@@ -17,6 +17,7 @@ export async function getGodot(version: string, mono: boolean): Promise<string> 
 
   const godotFileName = `Godot_v${version}-stable_${mono ? "mono_" : ""}linux_headless${mono ? "_" : "."}64`;
 
+                                                   https://github.com/godotengine/godot-builds/releases/download/3.5.3-stable/Godot_v3.5.3-stable_linux_headless.64.zip
   const godotDownloadPath = await tc.downloadTool(`https://github.com/godotengine/godot-builds/releases/download/${version}/${godotFileName}.zip`);
   core.info(`${godotLabel} donwload sucessfull!`);
 
@@ -49,8 +50,9 @@ export async function getTemplates(version: string, mono: boolean): Promise<void
     const templatesFileName = `Godot_v${version}-stable_${mono ? "mono_" : ""}export_templates`;
 
     core.info(`Attempting to download ${templatesLabel} export templates...`);
+
     const templatesDownloadPath = await tc.downloadTool(
-      `https://downloads.tuxfamily.org/godotengine/${version}/${mono ? "mono/" : ""}${templatesFileName}.tpz`
+      `https://github.com/godotengine/godot-builds/releases/download/${version}/${templatesFileName}.tpz`
     );
     core.info(`${templatesLabel} donwload sucessfull!`);
 
